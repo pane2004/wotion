@@ -221,7 +221,7 @@ export default function StockBuilder() {
             colorScheme="blue"
             onClick={() => {
               navigator.clipboard.writeText(
-                `http://localhost:3000/widgets/stocks${linkString}`
+                `http://localhost:3000/widgets/stock${linkString}`
               );
             }}
           />

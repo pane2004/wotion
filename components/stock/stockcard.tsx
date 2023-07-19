@@ -7,7 +7,6 @@ import {
   Text,
   Skeleton,
 } from "@chakra-ui/react";
-import { ChevronLeftIcon } from "@chakra-ui/icons";
 
 import { StockConfig, StockData } from "@/types/types";
 

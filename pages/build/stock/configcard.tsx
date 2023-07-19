@@ -54,18 +54,18 @@ export default function StockConfigCard({
             <Box>
               <Text fontSize="md">Ticker</Text>
               <Input
-                placeholder={`${widget.stock}`}
+                placeholder={`${widget?.stock}`}
                 onChange={(e) => {
-                  configChangeHandler(e.target.value, "stock", widget.id);
+                  configChangeHandler(e.target.value, "stock", widget?.id);
                 }}
               />
             </Box>
             <Box>
               <Text fontSize="md">% Interval</Text>
               <Select
-                placeholder={widget.interval}
+                placeholder={widget?.interval}
                 onChange={(e) => {
-                  configChangeHandler(e.target.value, "interval", widget.id);
+                  configChangeHandler(e.target.value, "interval", widget?.id);
                 }}
               >
                 {STOCK_INTERVALS.map((interval) => (
@@ -80,25 +80,25 @@ export default function StockConfigCard({
             <FormControl alignItems="left">
               <FormLabel htmlFor="show-open-price">Open</FormLabel>
               <Switch
-                isChecked={widget.showOpen}
+                isChecked={widget?.showOpen}
                 size="lg"
                 id="show-open-price"
                 onChange={() => {
-                  configChangeHandler(!widget.showOpen, "showOpen", widget.id);
+                  configChangeHandler(!widget?.showOpen, "showOpen", widget?.id);
                 }}
               />
             </FormControl>
             <FormControl alignItems="left">
               <FormLabel htmlFor="show-close-price">Close</FormLabel>
               <Switch
-                isChecked={widget.showClose}
+                isChecked={widget?.showClose}
                 size="lg"
                 id="show-close-price"
                 onChange={() => {
                   configChangeHandler(
-                    !widget.showClose,
+                    !widget?.showClose,
                     "showClose",
-                    widget.id
+                    widget?.id
                   );
                 }}
               />
@@ -106,36 +106,36 @@ export default function StockConfigCard({
             <FormControl alignItems="left">
               <FormLabel htmlFor="show-high-price">High</FormLabel>
               <Switch
-                isChecked={widget.showHigh}
+                isChecked={widget?.showHigh}
                 size="lg"
                 id="show-high-price"
                 onChange={() => {
-                  configChangeHandler(!widget.showHigh, "showHigh", widget.id);
+                  configChangeHandler(!widget?.showHigh, "showHigh", widget?.id);
                 }}
               />
             </FormControl>
             <FormControl alignItems="left">
               <FormLabel htmlFor="show-low-price">Low</FormLabel>
               <Switch
-                isChecked={widget.showLow}
+                isChecked={widget?.showLow}
                 size="lg"
                 id="show-low-price"
                 onChange={() => {
-                  configChangeHandler(!widget.showLow, "showLow", widget.id);
+                  configChangeHandler(!widget?.showLow, "showLow", widget?.id);
                 }}
               />
             </FormControl>
             <FormControl alignItems="left">
               <FormLabel htmlFor="show-volume">Volume</FormLabel>
               <Switch
-                isChecked={widget.showVolume}
+                isChecked={widget?.showVolume}
                 size="lg"
                 id="show-volume"
                 onChange={() => {
                   configChangeHandler(
-                    !widget.showVolume,
+                    !widget?.showVolume,
                     "showVolume",
-                    widget.id
+                    widget?.id
                   );
                 }}
               />
@@ -148,7 +148,7 @@ export default function StockConfigCard({
           aria-label="Delete stock"
           icon={<DeleteIcon />}
           onClick={() => {
-            deleteHandler(widget.id);
+            deleteHandler(widget?.id);
           }}
         />
       </Flex>

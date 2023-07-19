@@ -1,4 +1,4 @@
-import { StockConfig } from "@/types/types";
+import { StockConfig, StockInterval } from "@/types/types";
 
 export const DEFAULT_STOCK_CARDS_CONFIG: StockConfig[] = [
   {
@@ -10,7 +10,6 @@ export const DEFAULT_STOCK_CARDS_CONFIG: StockConfig[] = [
     showClose: true,
     showHigh: true,
     showLow: true,
-    dark: false,
   },
   {
     id: Date.now().toString(36) + Math.random().toString(36).substring(2),
@@ -21,7 +20,6 @@ export const DEFAULT_STOCK_CARDS_CONFIG: StockConfig[] = [
     showClose: true,
     showHigh: false,
     showLow: false,
-    dark: false,
   },
   {
     id: Date.now().toString(36) + Math.random().toString(36).substring(2),
@@ -32,6 +30,19 @@ export const DEFAULT_STOCK_CARDS_CONFIG: StockConfig[] = [
     showClose: false,
     showHigh: true,
     showLow: true,
-    dark: false,
   },
+];
+
+export const STOCK_INTERVALS: StockInterval[] = [
+  "1d",
+  "5d",
+  "1wk",
+  "1mo",
+  "3mo",
+  "6mo",
+  "1y",
+  "2y",
+  "5y",
+  "10y",
+  "ytd",
 ];

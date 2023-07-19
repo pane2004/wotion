@@ -17,19 +17,7 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { StockConfig, StockInterval } from "@/types/types";
 
-const STOCK_INTERVALS: StockInterval[] = [
-  "1d",
-  "5d",
-  "1wk",
-  "1mo",
-  "3mo",
-  "6mo",
-  "1y",
-  "2y",
-  "5y",
-  "10y",
-  "ytd",
-];
+import { STOCK_INTERVALS } from "@/constants/stock";
 
 export default function StockConfigCard({
   id,

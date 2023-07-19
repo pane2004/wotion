@@ -7,7 +7,6 @@ export type StockConfig = {
   showClose: boolean;
   showHigh: boolean;
   showLow: boolean;
-  dark: boolean;
 };
 
 export type StockInterval =

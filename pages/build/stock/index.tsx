@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 import {
   Flex,
@@ -8,8 +8,10 @@ import {
   Spacer,
   IconButton,
   Text,
+  ButtonGroup,
+  VStack
 } from "@chakra-ui/react";
-import { ChevronLeftIcon, AddIcon } from "@chakra-ui/icons";
+import { ChevronLeftIcon, AddIcon, CopyIcon } from "@chakra-ui/icons";
 
 import {
   DndContext,
@@ -30,11 +32,42 @@ import { StockConfig, StockInterval } from "@/types/types";
 import StockConfigCard from "./configcard";
 import StockCard from "@/components/stock/stockcard";
 
+/*
+  General Format of Data in Link - CANNOT have deeply nested data
+
+  /PARAM1/PARAM2/...
+  /field1=value&&field2=value&&.../...
+
+  example: 
+  /ticker=AMC&&interval=1m&&open&&close=false&&volume=true/ticker=GME... etc
+*/
+
 export default function StockBuilder() {
   const [stockConfigs, setStockConfigs] = useState<StockConfig[]>(
     DEFAULT_STOCK_CARDS_CONFIG
   );
-  console.log(stockConfigs);
+
+  const linkString = useMemo(() => {
+    return stockConfigs
+      .map((item) => {
+        const itemString = Object.entries(item)
+          .map(([key, value]) => {
+            if (key === "id") {
+              return;
+            }
+            if (typeof value === "boolean") {
+              return value ? key : `!${key}`;
+            }
+            return `${key}=${value}`;
+          })
+          .filter((str) => str)
+          .join("&&");
+
+        return `/${itemString}`;
+      })
+      .join("");
+  }, [stockConfigs])
+
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
@@ -117,7 +150,7 @@ export default function StockBuilder() {
         {/* Existing Stock Widgets */}
         <Heading size="md"> 📈 Stock Price Widget Builder</Heading>
 
-        <Flex direction="column" overflowY="auto" maxHeight="60vh">
+        <Flex direction="column" overflowY="auto" maxHeight="70vh">
           <DndContext
             collisionDetection={closestCenter}
             onDragEnd={handleDragEnd}
@@ -141,31 +174,77 @@ export default function StockBuilder() {
           </DndContext>
         </Flex>
         {/* New Stock Widget in Stack */}
-        <Button
-          borderRadius="lg"
-          size="md"
-          colorScheme="gray"
-          leftIcon={<AddIcon />}
-          variant="outline"
-          minHeight="80px"
-          borderWidth="2px"
-          onClick={newHandler}
-        >
-          New Stock
-        </Button>
+        {stockConfigs && !(stockConfigs.length > 4) && (
+          <Button
+            borderRadius="lg"
+            size="md"
+            colorScheme="gray"
+            leftIcon={<AddIcon />}
+            variant="outline"
+            minHeight="80px"
+            borderWidth="2px"
+            onClick={newHandler}
+          >
+            New Stock
+          </Button>
+        )}
         <Spacer />
+        <ButtonGroup
+          size="sm"
+          isAttached
+          borderRadius="lg"
+          colorScheme="gray"
+          minHeight="60px"
+          borderWidth="3px"
+          display="flex"
+        >
+          <Button
+            onClick={() => {
+              navigator.clipboard.writeText(
+                `http://localhost:3000/widgets/stocks${linkString}`
+              );
+            }}
+            flexBasis={0}
+            flexGrow={1}
+            minHeight="60px"
+          >
+            <Box isTruncated maxW={500} textDecoration="underline">
+              {`http://localhost:3000/widgets/stocks${linkString}`}
+            </Box>
+          </Button>
+          <IconButton
+            flexBasis="80px"
+            size="lg"
+            minHeight="60px"
+            aria-label="Copy to clipboard"
+            icon={<CopyIcon />}
+            colorScheme="blue"
+            onClick={() => {
+              navigator.clipboard.writeText(
+                `http://localhost:3000/widgets/stocks${linkString}`
+              );
+            }}
+          />
+        </ButtonGroup>
       </Flex>
       <Flex
-        flexGrow="5"
+        flexGrow="4"
         justifyContent="center"
         alignItems="center"
         direction="column"
-        gap={5}
       >
-        {stockConfigs.length > 0 &&
-          stockConfigs.map((widget, i) => (
-            <StockCard key={`${widget.id}-${i}`} config={widget} />
-          ))}
+        <VStack
+          gap={5}
+          border="2px"
+          borderColor="gray.400"
+          borderStyle="dashed"
+          padding={1}
+        >
+          {stockConfigs.length > 0 &&
+            stockConfigs.map((widget, i) => (
+              <StockCard key={`${widget.id}-${i}`} config={widget} />
+            ))}
+        </VStack>
       </Flex>
     </Flex>
   );

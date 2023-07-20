@@ -73,19 +73,18 @@ export default function StockWidget() {
       {error ? (
         <Text>L bozo</Text>
       ) : (
-        <VStack
-          spacing={5}
+        <Flex
+          gap={5}
           padding={1}
           width={"100%"}
           height={"100%"}
-          borderColor={"red"}
-          border={"2px"}
+          direction={"column"}
         >
           {configs && configs.length > 0 &&
             configs.map((widget, i) => (
               <StockCard key={`${widget.id}-${i}`} config={widget} />
             ))}
-        </VStack>
+        </Flex>
       )}
     </Box>
   );

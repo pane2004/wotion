@@ -9,7 +9,13 @@ import {
   IconButton,
   Text,
   ButtonGroup,
-  VStack
+  VStack,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverBody,
+  PopoverArrow,
+  PopoverCloseButton,
 } from "@chakra-ui/react";
 import { ChevronLeftIcon, AddIcon, CopyIcon } from "@chakra-ui/icons";
 
@@ -66,7 +72,7 @@ export default function StockBuilder() {
         return `/${itemString}`;
       })
       .join("");
-  }, [stockConfigs])
+  }, [stockConfigs]);
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -189,43 +195,52 @@ export default function StockBuilder() {
           </Button>
         )}
         <Spacer />
-        <ButtonGroup
-          size="sm"
-          isAttached
-          borderRadius="lg"
-          colorScheme="gray"
-          minHeight="60px"
-          borderWidth="3px"
-          display="flex"
-        >
-          <Button
-            onClick={() => {
-              navigator.clipboard.writeText(
-                `http://localhost:3000/widgets/stocks${linkString}`
-              );
-            }}
-            flexBasis={0}
-            flexGrow={1}
-            minHeight="60px"
-          >
-            <Box isTruncated maxW={500} textDecoration="underline">
-              {`http://localhost:3000/widgets/stocks${linkString}`}
-            </Box>
-          </Button>
-          <IconButton
-            flexBasis="80px"
-            size="lg"
-            minHeight="60px"
-            aria-label="Copy to clipboard"
-            icon={<CopyIcon />}
-            colorScheme="blue"
-            onClick={() => {
-              navigator.clipboard.writeText(
-                `http://localhost:3000/widgets/stock${linkString}`
-              );
-            }}
-          />
-        </ButtonGroup>
+        <Popover>
+          <PopoverTrigger>
+            <ButtonGroup
+              size="sm"
+              isAttached
+              borderRadius="lg"
+              colorScheme="gray"
+              minHeight="60px"
+              borderWidth="3px"
+              display="flex"
+            >
+              <Button
+                onClick={() => {
+                  navigator.clipboard.writeText(
+                    `http://localhost:3000/widgets/stocks${linkString}`
+                  );
+                }}
+                flexBasis={0}
+                flexGrow={1}
+                minHeight="60px"
+              >
+                <Box isTruncated maxW={500} textDecoration="underline">
+                  {`http://localhost:3000/widgets/stocks${linkString}`}
+                </Box>
+              </Button>
+              <IconButton
+                flexBasis="80px"
+                size="lg"
+                minHeight="60px"
+                aria-label="Copy to clipboard"
+                icon={<CopyIcon />}
+                colorScheme="blue"
+                onClick={() => {
+                  navigator.clipboard.writeText(
+                    `http://localhost:3000/widgets/stock${linkString}`
+                  );
+                }}
+              />
+            </ButtonGroup>
+          </PopoverTrigger>
+          <PopoverContent>
+            <PopoverArrow />
+            <PopoverCloseButton />
+            <PopoverBody>Copied to Clipboard!</PopoverBody>
+          </PopoverContent>
+        </Popover>
       </Flex>
       <Flex
         flexGrow="4"

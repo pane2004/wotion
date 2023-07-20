@@ -1,12 +1,6 @@
 import { useState, useEffect } from "react";
 
-import {
-  Box,
-  Heading,
-  Spacer,
-  Text,
-  Skeleton,
-} from "@chakra-ui/react";
+import { Box, Heading, Spacer, Text, Skeleton } from "@chakra-ui/react";
 
 import { StockConfig, StockData } from "@/types/types";
 
@@ -58,14 +52,14 @@ export default function StockCard({ config }: { config: StockConfig }) {
   }, [config]);
 
   // Loading state
-  if(isLoading) {
+  if (isLoading) {
     return (
       <Box minW="30vh" p={5} bg="gray.100" borderRadius="lg">
         <Skeleton height="30px" my="10px" />
         <Skeleton height="30px" my="10px" />
         <Skeleton height="30px" my="10px" />
       </Box>
-    )
+    );
   }
 
   if (!data) return null;
@@ -78,7 +72,7 @@ export default function StockCard({ config }: { config: StockConfig }) {
       alignItems="flex-start"
       borderRadius="lg"
       p={5}
-      minW="30vh"
+      width={"100%"}
     >
       <Box display="flex" alignContent="start" alignItems={"flex-end"}>
         <Heading size="lg">{data.symbol}</Heading>
@@ -87,49 +81,62 @@ export default function StockCard({ config }: { config: StockConfig }) {
       <Box display="flex" alignItems="center" width="100%">
         <Box display="flex" flexDirection="column" alignItems="flex-start">
           <Heading size="xl">${data.currentPrice}</Heading>
-          <Text color="grey" fontSize="md">
+          <Text color="grey" size="md">
             {data.timeZone}
           </Text>
         </Box>
         <Spacer />
         <Box display="flex" flexDirection="column" alignItems="flex-end">
-          <Text color={data.change >= 0 ? "green" : "red"} fontSize="3xl">
+          <Heading
+            size="xl"
+            color={data.change >= 0 ? "green" : "red"}
+            fontWeight={"normal"}
+          >
             {data.percentChange}%
-          </Text>
-          <Text color="grey" fontSize="md">
+          </Heading>
+          <Text color="grey" fontSize="md" textAlign="right">
             {formatTimeStamp(data.timestamp)}
           </Text>
         </Box>
       </Box>
-      <Box display="flex" flexDirection="row" justifyContent="center" gap={3}>
-        <Box display="flex" flexDirection="column" alignItems="flex-end">
-          {config.showOpen && (
-            <Text>
-              <b>Open: </b>
-              {data.open}
-            </Text>
-          )}
-          {config.showClose && (
-            <Text>
-              <b>Close: </b>
-              {data.close}
-            </Text>
-          )}
-        </Box>
-        <Box display="flex" flexDirection="column" alignItems="flex-end">
-          {config.showHigh && (
-            <Text>
-              <b>High: </b>
-              {data.high}
-            </Text>
-          )}
-          {config.showLow && (
-            <Text>
-              <b>Low: </b>
-              {data.low}
-            </Text>
-          )}
-        </Box>
+      <Box
+        display="flex"
+        flexDirection="row"
+        justifyContent="flex-start"
+        gap={3}
+      >
+        {(config.showOpen || config.showClose) && (
+          <Box display="flex" flexDirection="column" alignItems="flex-start">
+            {config.showOpen && (
+              <Text>
+                <b>Open: </b>
+                {data.open}
+              </Text>
+            )}
+            {config.showClose && (
+              <Text>
+                <b>Close: </b>
+                {data.close}
+              </Text>
+            )}
+          </Box>
+        )}
+        {(config.showHigh || config.showLow) && (
+          <Box display="flex" flexDirection="column" alignItems="flex-start">
+            {config.showHigh && (
+              <Text>
+                <b>High: </b>
+                {data.high}
+              </Text>
+            )}
+            {config.showLow && (
+              <Text>
+                <b>Low: </b>
+                {data.low}
+              </Text>
+            )}
+          </Box>
+        )}
         {config.showVolume && (
           <Text>
             <b>Volume: </b>

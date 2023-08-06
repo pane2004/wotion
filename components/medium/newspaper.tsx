@@ -9,15 +9,19 @@ import HTMLFlipBook from "react-pageflip";
 export default function MediumNewspaper({
   target,
   format,
+  config,
 }: {
   target: string | undefined;
   format: MediumFormat | undefined;
+  config: any;
 }) {
   const [data, setData] = useState<MediumData>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<boolean>(false);
   console.log(data);
   console.log(format);
   console.log(target);
+  console.log(config)
 
   // fetch data on target or format change
   useEffect(() => {
@@ -34,6 +38,7 @@ export default function MediumNewspaper({
           const data: MediumData = await res.json();
           setData(data);
         } else {
+          if (target !== "") setError(true);
           setData(undefined);
           console.error("Response Status:", res.status);
         }
@@ -60,6 +65,15 @@ export default function MediumNewspaper({
     );
   }
 
+  if (error) {
+    return (
+      <Box>
+        Error retrieving Medium Articles. <br/><br/>Make sure it follows the specified
+        format! (and exists 😉)
+      </Box>
+    );
+  }
+
   if (!data) return null;
 
   return (
@@ -73,8 +87,8 @@ export default function MediumNewspaper({
       justifyContent="center"
     >
       <HTMLFlipBook
-        width={400}
-        height={600}
+        width={config.width}
+        height={config.height}
         maxShadowOpacity={0.3}
         drawShadow={true}
         usePortrait={true}
@@ -88,8 +102,8 @@ export default function MediumNewspaper({
             alignItems="center"
             justifyContent={"center"}
             flexDirection="column"
-            minW={400}
-            minH={600}
+            minW={config.width}
+            minH={config.height}
             gap={10}
             borderColor={"grey.200"}
             borderWidth={1}
@@ -116,8 +130,8 @@ export default function MediumNewspaper({
                 bg="gray.100"
                 borderRadius="lg"
                 style={{ maxHeight: "100%", overflowY: "scroll" }}
-                minW={400}
-                minH={600}
+                minW={config.width}
+                minH={config.height}
                 borderColor={"grey.200"}
                 borderWidth={1}
               >

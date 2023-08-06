@@ -75,11 +75,11 @@ export default async function handler(
       case "Publication":
         jsonRes = await fetchRssFeed(`https://medium.com/feed/${target}`);
         break;
-      case "Tag Page":
+      case "Tag":
         jsonRes = await fetchRssFeed(`https://medium.com/feed/tag/${target}`);
         break;
       // custom domain, we are just gonna default to this
-      case "Custom Domain":
+      case "Custom":
         if (/^medium\..+$/i.test(target ?? "")) {
           jsonRes = await fetchRssFeed(`https://${target}/feed`);
         } else {

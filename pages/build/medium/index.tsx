@@ -18,15 +18,37 @@ import {
   PopoverCloseButton,
   Input,
   Select,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  InputGroup,
+  InputRightElement,
+  Slider,
+  Switch,
 } from "@chakra-ui/react";
-import { ChevronLeftIcon, AddIcon, CopyIcon } from "@chakra-ui/icons";
-import { ARTICLE_OPTIONS } from "@/constants/stock";
-import { MediumFormat } from "@/types/types";
+import {
+  ChevronLeftIcon,
+  AddIcon,
+  CopyIcon,
+  RepeatIcon,
+} from "@chakra-ui/icons";
+import { ARTICLE_OPTIONS, MEDIUM_HELPER_MESSAGES } from "@/constants/stock";
+import { MediumFormat, MediumPaperConfig } from "@/types/types";
 import MediumNewspaper from "@/components/medium/newspaper";
 
 export default function StockBuilder() {
-  const [target, setTarget] = useState<string>();
-  const [format, setFormat] = useState<MediumFormat>();
+  const [target, setTarget] = useState<string>("MicrosoftDesign");
+  const [format, setFormat] = useState<MediumFormat>("User");
+  const [config, setConfig] = useState<MediumPaperConfig>({
+    width: 400,
+    height: 600,
+  });
+  const [tempTarget, setTempTarget] = useState<string>(target);
+
+  const linkString = useMemo(() => {
+    return `format=${format}&&target=${target}&&w=${config.width}&&h=${config.height}`;
+  }, [target, format, config.width, config.height]);
 
   return (
     <Flex alignItems="center" gap="2" wrap="wrap">
@@ -50,14 +72,16 @@ export default function StockBuilder() {
         </Flex>
         {/* Existing Stock Widgets */}
         <Heading size="md"> 📰 Medium Article Widget Builder</Heading>
-        <Box>
-          <Text fontSize="md">Article Feed Source</Text>
+        <FormControl>
+          <FormLabel>Article Feed Source</FormLabel>
           <Select
             placeholder={"Select Source"}
             onChange={(e) => {
-              setTarget(undefined);
+              setTempTarget("");
+              setTarget("");
               setFormat(e.target.value as MediumFormat);
             }}
+            value={format}
           >
             {ARTICLE_OPTIONS.map((opt) => (
               <option key={opt} value={opt}>
@@ -65,17 +89,69 @@ export default function StockBuilder() {
               </option>
             ))}
           </Select>
-        </Box>
+        </FormControl>
         {format && (
-          <Box>
-            <Text fontSize="md">Medium {format}</Text>
-            <Input
-              placeholder={"Enter Info"}
-              onChange={(e) => {
-                setTarget(e.target.value);
-              }}
-            />
-          </Box>
+          <FormControl>
+            <FormLabel>Medium {format}</FormLabel>
+            <InputGroup size="md">
+              <Input
+                placeholder={"Enter Info"}
+                onChange={(e) => {
+                  setTempTarget(e.target.value);
+                }}
+                value={tempTarget}
+              />
+              <InputRightElement>
+                <IconButton
+                  aria-label="Search database"
+                  size="sm"
+                  icon={<RepeatIcon />}
+                  onClick={() => {
+                    setTarget(tempTarget);
+                  }}
+                />
+              </InputRightElement>
+            </InputGroup>
+            <FormHelperText>{MEDIUM_HELPER_MESSAGES[format]}</FormHelperText>
+          </FormControl>
+        )}
+        {format && (
+          <Flex gap={5}>
+            <FormControl>
+              <FormLabel>Page Width</FormLabel>
+              <InputGroup size="md">
+                <Input
+                  placeholder={"Set Width"}
+                  onChange={(e) => {
+                    setConfig((ex: MediumPaperConfig) => {
+                      return { ...ex, width: parseInt(e.target.value) };
+                    });
+                  }}
+                  value={config.width}
+                  type="number"
+                  max={800}
+                />
+                <InputRightElement>px</InputRightElement>
+              </InputGroup>
+            </FormControl>
+            <FormControl>
+              <FormLabel>Page Height</FormLabel>
+              <InputGroup size="md">
+                <Input
+                  placeholder={"Enter Height"}
+                  onChange={(e) => {
+                    setConfig((ex: MediumPaperConfig) => {
+                      return { ...ex, height: parseInt(e.target.value) };
+                    });
+                  }}
+                  value={config.height}
+                  type="number"
+                  max={800}
+                />
+                <InputRightElement>px</InputRightElement>
+              </InputGroup>
+            </FormControl>
+          </Flex>
         )}
         <Spacer />
         <Popover>
@@ -92,7 +168,7 @@ export default function StockBuilder() {
               <Button
                 onClick={() => {
                   navigator.clipboard.writeText(
-                    `http://localhost:3000/widgets/medium`
+                    `http://localhost:3000/widgets/medium/${linkString}`
                   );
                 }}
                 flexBasis={0}
@@ -100,7 +176,7 @@ export default function StockBuilder() {
                 minHeight="60px"
               >
                 <Box isTruncated maxW={500} textDecoration="underline">
-                  {`http://localhost:3000/widgets/medium`}
+                  {`http://localhost:3000/widgets/medium/${linkString}`}
                 </Box>
               </Button>
               <IconButton
@@ -112,7 +188,7 @@ export default function StockBuilder() {
                 colorScheme="blue"
                 onClick={() => {
                   navigator.clipboard.writeText(
-                    `http://localhost:3000/widgets/medium`
+                    `http://localhost:3000/widgets/medium/${linkString}`
                   );
                 }}
               />
@@ -131,7 +207,12 @@ export default function StockBuilder() {
         alignItems="center"
         direction="column"
       >
-        <MediumNewspaper target={target} format={format} key={target}/>
+        <MediumNewspaper
+          target={target}
+          format={format}
+          key={`${target}-${config.width}-${config.height}-${format}`}
+          config={config}
+        />
       </Flex>
     </Flex>
   );

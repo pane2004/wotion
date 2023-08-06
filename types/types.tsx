@@ -45,4 +45,9 @@ export type MediumData = {
   articles: any,
 }
 
-export type MediumFormat = "User" | "Publication" | "Tag Page" | "Custom Domain";
+export type MediumFormat = "User" | "Publication" | "Tag" | "Custom";
+
+export type MediumPaperConfig = {
+  width: number;
+  height: number;
+}

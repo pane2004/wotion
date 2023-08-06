@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Box, Heading, Spacer, Text, Skeleton, Image } from "@chakra-ui/react";
 
 import { MEDIUM_LOGO } from "@/constants/stock";
-import { MediumData, MediumFormat } from "@/types/types";
+import { MediumData, MediumFormat, MediumPaperConfig } from "@/types/types";
 import HTMLFlipBook from "react-pageflip";
 // disable typing for flipbook
 const AnyFlipBook: any = HTMLFlipBook;
@@ -15,7 +15,7 @@ export default function MediumNewspaper({
 }: {
   target: string | undefined;
   format: MediumFormat | undefined;
-  config: any;
+  config: MediumPaperConfig;
 }) {
   const [data, setData] = useState<MediumData>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -39,6 +39,7 @@ export default function MediumNewspaper({
         if (res.ok) {
           const data: MediumData = await res.json();
           setData(data);
+          setError(false);
         } else {
           if (target !== "") setError(true);
           setData(undefined);

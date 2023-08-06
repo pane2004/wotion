@@ -1,11 +1,6 @@
 import { StockConfig } from "@/types/types";
 import { useRouter } from "next/router";
-import {
-  Flex,
-  VStack,
-  Box,
-  Text
-} from "@chakra-ui/react";
+import { Flex, VStack, Box, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { STOCK_INTERVALS } from "@/constants/stock";
 import StockCard from "@/components/stock/stockcard";
@@ -75,13 +70,13 @@ export default function StockWidget() {
       ) : (
         <Flex
           gap={5}
-          padding={1}
           width={"100%"}
           height={"100%"}
           direction={"column"}
           p={5}
         >
-          {configs && configs.length > 0 &&
+          {configs &&
+            configs.length > 0 &&
             configs.map((widget, i) => (
               <StockCard key={`${widget.id}-${i}`} config={widget} />
             ))}
@@ -89,5 +84,4 @@ export default function StockWidget() {
       )}
     </Box>
   );
-  
 }

@@ -1,3 +1,5 @@
+import { Url } from "url";
+
 export type StockConfig = {
   id: string;
   stock: string;
@@ -36,3 +38,11 @@ export type StockData = {
   volume: number;
   timestamp: number;
 } | undefined;
+
+export type MediumData = {
+  author: string,
+  authorImg: string,
+  articles: any,
+}
+
+export type MediumFormat = "User" | "Publication" | "Tag Page" | "Custom Domain";

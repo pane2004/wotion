@@ -1,0 +1,146 @@
+import { useState, useEffect } from "react";
+
+import { Box, Heading, Spacer, Text, Skeleton, Image } from "@chakra-ui/react";
+
+import { MEDIUM_LOGO } from "@/constants/stock";
+import { MediumData, MediumFormat } from "@/types/types";
+import HTMLFlipBook from "react-pageflip";
+
+export default function MediumNewspaper({
+  target,
+  format,
+}: {
+  target: string | undefined;
+  format: MediumFormat | undefined;
+}) {
+  const [data, setData] = useState<MediumData>();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  console.log(data);
+  console.log(format);
+  console.log(target);
+
+  // fetch data on target or format change
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const res = await fetch(`/api/widgets/medium/${format}/${target}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (res.ok) {
+          const data: MediumData = await res.json();
+          setData(data);
+        } else {
+          setData(undefined);
+          console.error("Response Status:", res.status);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [target, format]);
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <Box minW="30vh" p={5} bg="gray.100" borderRadius="lg">
+        <Skeleton height="50px" my="10px" />
+        <Skeleton height="50px" my="10px" />
+        <Skeleton height="50px" my="10px" />
+        <Skeleton height="50px" my="10px" />
+        <Skeleton height="50px" my="10px" />
+      </Box>
+    );
+  }
+
+  if (!data) return null;
+
+  return (
+    <Box
+      w="100%"
+      h="100%"
+      p={10}
+      overflow="hidden"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+    >
+      <HTMLFlipBook
+        width={400}
+        height={600}
+        maxShadowOpacity={0.3}
+        drawShadow={true}
+        usePortrait={true}
+      >
+        <div key={target}>
+          <Box
+            p={5}
+            bg="gray.100"
+            borderRadius="lg"
+            display={"flex"}
+            alignItems="center"
+            justifyContent={"center"}
+            flexDirection="column"
+            minW={400}
+            minH={600}
+            gap={10}
+            borderColor={"grey.200"}
+            borderWidth={1}
+          >
+            {format === "User" && (
+              <Image
+                borderRadius="full"
+                boxSize="150px"
+                src={data.authorImg}
+                alt={`${data.author}`}
+              />
+            )}
+            <Heading size="md">
+              {format === "User" ? data.author : `${format}`}
+            </Heading>
+            <MEDIUM_LOGO />
+          </Box>
+        </div>
+        {data &&
+          data.articles.map((article: any, i: number) => (
+            <div key={`${article.title}-${i}`}>
+              <Box
+                p={5}
+                bg="gray.100"
+                borderRadius="lg"
+                style={{ maxHeight: "100%", overflowY: "scroll" }}
+                minW={400}
+                minH={600}
+                borderColor={"grey.200"}
+                borderWidth={1}
+              >
+                <Box
+                  dangerouslySetInnerHTML={{ __html: article.title }}
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "20px",
+                    textAlign: "center",
+                    overflowX: "clip",
+                  }}
+                  pl={5}
+                  pr={5}
+                />
+                <Box
+                  dangerouslySetInnerHTML={{ __html: article.description }}
+                  pl={5}
+                  pr={5}
+                />
+              </Box>
+            </div>
+          ))}
+      </HTMLFlipBook>
+    </Box>
+  );
+}

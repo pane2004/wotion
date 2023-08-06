@@ -19,7 +19,7 @@ function formatTimeStamp(timeStamp: number) {
 
 export default function StockCard({ config }: { config: StockConfig }) {
   const [data, setData] = useState<StockData>(undefined);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   // fetch stock data on mount
   useEffect(() => {

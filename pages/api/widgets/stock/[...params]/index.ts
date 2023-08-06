@@ -23,7 +23,7 @@ function formatData(data: any) {
     low: data.chart.result[0].indicators.quote[0].low[0].toFixed(2),
     volume: data.chart.result[0].indicators.quote[0].volume[0],
     timestamp: data.chart.result[0].timestamp[0],
-  } as StockData;
+  };
 }
 
 export default async function handler(

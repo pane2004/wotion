@@ -209,7 +209,7 @@ export default function StockBuilder() {
               <Button
                 onClick={() => {
                   navigator.clipboard.writeText(
-                    `http://localhost:3000/widgets/stocks${linkString}`
+                    `http://localhost:3000/widgets/stock${linkString}`
                   );
                 }}
                 flexBasis={0}
@@ -217,7 +217,7 @@ export default function StockBuilder() {
                 minHeight="60px"
               >
                 <Box isTruncated maxW={500} textDecoration="underline">
-                  {`http://localhost:3000/widgets/stocks${linkString}`}
+                  {`http://localhost:3000/widgets/stock${linkString}`}
                 </Box>
               </Button>
               <IconButton

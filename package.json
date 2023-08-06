@@ -24,8 +24,15 @@
     "framer-motion": "^10.12.22",
     "mongodb": "^5.7.0",
     "next": "13.4.10",
+    "node-fetch": "^3.3.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "5.1.6"
+    "react-pageflip": "^2.0.3",
+    "rss-to-json": "^2.1.1",
+    "typescript": "5.1.6",
+    "xml2js": "^0.6.2"
+  },
+  "devDependencies": {
+    "@types/xml2js": "^0.4.11"
   }
 }

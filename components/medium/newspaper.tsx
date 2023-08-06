@@ -5,6 +5,8 @@ import { Box, Heading, Spacer, Text, Skeleton, Image } from "@chakra-ui/react";
 import { MEDIUM_LOGO } from "@/constants/stock";
 import { MediumData, MediumFormat } from "@/types/types";
 import HTMLFlipBook from "react-pageflip";
+// disable typing for flipbook
+const AnyFlipBook: any = HTMLFlipBook;
 
 export default function MediumNewspaper({
   target,
@@ -21,7 +23,7 @@ export default function MediumNewspaper({
   console.log(data);
   console.log(format);
   console.log(target);
-  console.log(config)
+  console.log(config);
 
   // fetch data on target or format change
   useEffect(() => {
@@ -68,8 +70,9 @@ export default function MediumNewspaper({
   if (error) {
     return (
       <Box>
-        Error retrieving Medium Articles. <br/><br/>Make sure it follows the specified
-        format! (and exists 😉)
+        Error retrieving Medium Articles. <br />
+        <br />
+        Make sure it follows the specified format! (and exists 😉)
       </Box>
     );
   }
@@ -86,7 +89,7 @@ export default function MediumNewspaper({
       alignItems="center"
       justifyContent="center"
     >
-      <HTMLFlipBook
+      <AnyFlipBook
         width={config.width}
         height={config.height}
         maxShadowOpacity={0.3}
@@ -154,7 +157,7 @@ export default function MediumNewspaper({
               </Box>
             </div>
           ))}
-      </HTMLFlipBook>
+      </AnyFlipBook>
     </Box>
   );
 }

@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-
 import { Box, Heading, Spacer, Text, Skeleton, Image } from "@chakra-ui/react";
-
 import { MEDIUM_LOGO } from "@/constants/stock";
 import { MediumData, MediumFormat, MediumPaperConfig } from "@/types/types";
 import HTMLFlipBook from "react-pageflip";
@@ -20,10 +18,6 @@ export default function MediumNewspaper({
   const [data, setData] = useState<MediumData>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
-  console.log(data);
-  console.log(format);
-  console.log(target);
-  console.log(config);
 
   // fetch data on target or format change
   useEffect(() => {

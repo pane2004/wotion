@@ -73,7 +73,6 @@ export default function StockWidget() {
           width={"100%"}
           height={"100%"}
           direction={"column"}
-          p={5}
         >
           {configs &&
             configs.length > 0 &&

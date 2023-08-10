@@ -8,7 +8,7 @@ import {
   Image,
   Link,
 } from "@chakra-ui/react";
-import { MEDIUM_LOGO, SPOTIFY_LOGO } from "@/constants/stock";
+import { SPOTIFY_LOGO, VINYL_RECORD } from "@/constants/stock";
 import { SpotifyConfig } from "@/types/types";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -38,7 +38,7 @@ export default function SpotifyCarousel({
       const fetchData = async () => {
         setIsLoading(true);
         try {
-          const responsePromises = urls.map(async (url) => {
+          const responsePromises = urlsCopy.map(async (url) => {
             if (!url) return null;
             const parsedParam = encodeURIComponent(url);
             const res = await fetch(`/api/widgets/spotify/${parsedParam}`, {
@@ -87,7 +87,28 @@ export default function SpotifyCarousel({
   console.log(urlResponses);
 
   return (
-    <Box w={"100%"} h={"100%"} borderRadius={10} p={10}>
+    <Box
+      w={"100%"}
+      h={"100%"}
+      borderRadius={10}
+      p={10}
+      position="relative"
+    >
+      {config?.record && (
+        <VINYL_RECORD
+          style={{
+            position: "absolute",
+            left: "40%",
+            bottom: "10%",
+            animation: "spin 8s linear infinite",
+            zIndex: -1,
+            width: "80%",
+            height: "80%",
+            overflow: "hidden",
+          }}
+        />
+      )}
+
       <Carousel
         showArrows={false}
         showStatus={false}
@@ -98,7 +119,7 @@ export default function SpotifyCarousel({
         useKeyboardArrows={false}
         autoPlay={config?.auto}
         stopOnHover={true}
-        interval={8000}
+        interval={6000}
         transitionTime={1000}
       >
         {urlResponses &&
@@ -107,7 +128,9 @@ export default function SpotifyCarousel({
               key={url.html}
               p={5}
               position="relative"
-              _hover={{ ".overlay-text": { opacity: 1 } }}
+              _hover={{
+                ".overlay-text": { opacity: 1 },
+              }}
             >
               <Link
                 href={url.url}

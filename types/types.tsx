@@ -40,9 +40,9 @@ export type StockData = {
 } | undefined;
 
 export type MediumData = {
-  author: string,
-  authorImg: string,
-  articles: any,
+  author: string;
+  authorImg: string;
+  articles: any;
 }
 
 export type MediumFormat = "User" | "Publication" | "Tag" | "Custom";
@@ -50,4 +50,11 @@ export type MediumFormat = "User" | "Publication" | "Tag" | "Custom";
 export type MediumPaperConfig = {
   width: number;
   height: number;
+}
+
+export type SpotifyConfig = {
+  record: boolean;
+  shuffle: boolean;
+  auto:boolean;
+  logo:boolean;
 }

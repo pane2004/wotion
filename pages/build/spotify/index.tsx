@@ -49,13 +49,14 @@ import {
 } from "@dnd-kit/sortable";
 
 import { DEFAULT_STOCK_CARDS_CONFIG } from "@/constants/stock";
-import { StockConfig, StockInterval } from "@/types/types";
+import { SpotifyConfig } from "@/types/types";
+import SpotifyCarousel from "@/components/spotify/carousel";
 
-export default function StockBuilder() {
+export default function SpotifyBuilder() {
   const [urls, setUrls] = useState<string[]>([
     "https://open.spotify.com/track/2qOm7ukLyHUXWyR4ZWLwxA?",
   ]);
-  const [config, setConfig] = useState<any>({
+  const [config, setConfig] = useState<SpotifyConfig>({
     record: false,
     shuffle: false,
     auto: true,
@@ -179,7 +180,7 @@ export default function StockBuilder() {
               size="lg"
               isChecked={config.record}
               onChange={(e) => {
-                setConfig((prev: any) => {
+                setConfig((prev: SpotifyConfig) => {
                   return { ...prev, record: e.target.checked };
                 });
               }}
@@ -191,7 +192,7 @@ export default function StockBuilder() {
               size="lg"
               isChecked={config.shuffle}
               onChange={(e) => {
-                setConfig((prev: any) => {
+                setConfig((prev: SpotifyConfig) => {
                   return { ...prev, shuffle: e.target.checked };
                 });
               }}
@@ -203,7 +204,7 @@ export default function StockBuilder() {
               size="lg"
               isChecked={config.auto}
               onChange={(e) => {
-                setConfig((prev: any) => {
+                setConfig((prev: SpotifyConfig) => {
                   return { ...prev, auto: e.target.checked };
                 });
               }}
@@ -215,7 +216,7 @@ export default function StockBuilder() {
               size="lg"
               isChecked={config.logo}
               onChange={(e) => {
-                setConfig((prev: any) => {
+                setConfig((prev: SpotifyConfig) => {
                   return { ...prev, logo: e.target.checked };
                 });
               }}
@@ -276,7 +277,9 @@ export default function StockBuilder() {
         alignItems="center"
         direction="column"
       >
-        hi
+        <Box maxW="40vh" maxH="40vh">
+          <SpotifyCarousel config={config} urls={urls} />
+        </Box>
       </Flex>
     </Flex>
   );

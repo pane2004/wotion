@@ -28,6 +28,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-pageflip": "^2.0.3",
+    "react-responsive-carousel": "^3.2.23",
     "rss-to-json": "^2.1.1",
     "typescript": "5.1.6",
     "xml2js": "^0.6.2"

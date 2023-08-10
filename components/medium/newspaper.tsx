@@ -16,7 +16,7 @@ export default function MediumNewspaper({
   config: MediumPaperConfig;
 }) {
   const [data, setData] = useState<MediumData>();
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
 
   // fetch data on target or format change

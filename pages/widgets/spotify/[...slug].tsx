@@ -30,12 +30,10 @@ export default function SpotifyWidget() {
       {error ? (
         <Text>L bozo</Text>
       ) : (
-        <Flex width={"100%"} height={"100%"} p={5}>
           <SpotifyCarousel
             config={config}
             urls={urls}
           />
-        </Flex>
       )}
     </Box>
   );

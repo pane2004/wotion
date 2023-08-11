@@ -101,7 +101,6 @@ export default function SpotifyCarousel({
       w={"100%"}
       h={"100%"}
       borderRadius={10}
-      p={10}
       position="relative"
     >
       {config?.record && (

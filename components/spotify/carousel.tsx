@@ -49,6 +49,7 @@ export default function SpotifyCarousel({
             });
             if (res.ok) {
               const data = await res.json();
+              setError(false);
               return { ...data, url: url };
             } else {
               throw new Error(
@@ -84,7 +85,16 @@ export default function SpotifyCarousel({
     );
   }
 
-  console.log(urlResponses);
+  // Error state
+  if (error) {
+    return (
+      <Box>
+        Error retrieving Spotify data <br />
+        <br />
+        Make sure the urls in your widget follows the format! (and exists 😉)
+      </Box>
+    );
+  }
 
   return (
     <Box
@@ -108,7 +118,6 @@ export default function SpotifyCarousel({
           }}
         />
       )}
-
       <Carousel
         showArrows={false}
         showStatus={false}

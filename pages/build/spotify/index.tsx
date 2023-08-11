@@ -63,6 +63,18 @@ export default function SpotifyBuilder() {
     logo: true,
   });
 
+  const linkString = useMemo(() => {
+    const configStrings = Object.keys(config)
+      .filter((key): key is keyof SpotifyConfig => config.hasOwnProperty(key))
+      .map((key: keyof SpotifyConfig) => {
+        return config[key] ? key : `!${key}`;
+      }).join("/");
+
+    const urlStrings = urls.map((url: string) => encodeURIComponent(url)).join("/");
+
+    return `${configStrings}/${urlStrings}`;
+  }, [urls, config]);
+
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
@@ -93,7 +105,6 @@ export default function SpotifyBuilder() {
 
   const handleDragEnd = (event: any) => {
     const { active, over } = event;
-    console.log(event);
     if (active.id !== over.id) {
       setUrls((urls) => {
         const activeIndex = urls.findIndex((url) => url === active.id);
@@ -127,7 +138,7 @@ export default function SpotifyBuilder() {
         {/* Existing Stock Widgets */}
         <Heading size="md"> 🎧 Cleannn Spotify Widget Builder</Heading>
 
-        <Flex direction="column" overflowY="auto" maxHeight="70vh">
+        <Flex direction="column" overflowY="auto" maxHeight="50vh">
           <DndContext
             collisionDetection={closestCenter}
             onDragEnd={handleDragEnd}
@@ -159,7 +170,7 @@ export default function SpotifyBuilder() {
           </Text>
         </Flex>
         {/* New Stock Widget in Stack */}
-        {urls && (
+        {urls && urls.length < 16 && (
           <Button
             borderRadius="lg"
             size="md"
@@ -238,7 +249,7 @@ export default function SpotifyBuilder() {
               <Button
                 onClick={() => {
                   navigator.clipboard.writeText(
-                    `http://localhost:3000/widgets/spotify`
+                    `http://localhost:3000/widgets/spotify/${linkString}`
                   );
                 }}
                 flexBasis={0}
@@ -246,7 +257,7 @@ export default function SpotifyBuilder() {
                 minHeight="60px"
               >
                 <Box isTruncated maxW={500} textDecoration="underline">
-                  {`http://localhost:3000/widgets/spotify`}
+                  {`http://localhost:3000/widgets/spotify/${linkString}`}
                 </Box>
               </Button>
               <IconButton
@@ -258,7 +269,7 @@ export default function SpotifyBuilder() {
                 colorScheme="blue"
                 onClick={() => {
                   navigator.clipboard.writeText(
-                    `http://localhost:3000/widgets/spotify`
+                    `http://localhost:3000/widgets/spotify/${linkString}`
                   );
                 }}
               />

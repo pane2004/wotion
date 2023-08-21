@@ -1,8 +1,6 @@
+import LandingPage from "@/components/landing";
 import Head from "next/head";
 import { useRouter } from "next/navigation";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const router = useRouter();
@@ -16,16 +14,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <div>
-          <p>
-            hello does this work
-          </p>
-          <button
-            onClick={() => router.push("/build/stock")}
-          >
-            Dashboard
-          </button>
-        </div>
+        <LandingPage />
       </main>
     </>
   );

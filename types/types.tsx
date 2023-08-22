@@ -1,3 +1,4 @@
+import { StaticImageData } from "next/image";
 import { Url } from "url";
 
 export type StockConfig = {
@@ -24,37 +25,47 @@ export type StockInterval =
   | "10y"
   | "ytd";
 
-export type StockData = {
-  symbol: string;
-  exchange: "NYSE" | "NASDAQ";
-  currentPrice: number;
-  change: number;
-  percentChange: string;
-  timeZone: string;
-  open: string;
-  close: string;
-  high: string;
-  low: string;
-  volume: number;
-  timestamp: number;
-} | undefined;
+export type StockData =
+  | {
+      symbol: string;
+      exchange: "NYSE" | "NASDAQ";
+      currentPrice: number;
+      change: number;
+      percentChange: string;
+      timeZone: string;
+      open: string;
+      close: string;
+      high: string;
+      low: string;
+      volume: number;
+      timestamp: number;
+    }
+  | undefined;
 
 export type MediumData = {
   author: string;
   authorImg: string;
   articles: any;
-}
+};
 
 export type MediumFormat = "User" | "Publication" | "Tag" | "Custom";
 
 export type MediumPaperConfig = {
   width: number;
   height: number;
-}
+};
 
 export type SpotifyConfig = {
   record: boolean;
   shuffle: boolean;
-  auto:boolean;
-  logo:boolean;
-}
+  auto: boolean;
+  logo: boolean;
+};
+
+export type WidgetDisplay = {
+  id: string;
+  title: string;
+  img: StaticImageData;
+  description: string;
+  path: string;
+};

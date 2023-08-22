@@ -1,4 +1,7 @@
-import { StockConfig, StockInterval, MediumFormat } from "@/types/types";
+import { StockConfig, StockInterval, MediumFormat, WidgetDisplay } from "@/types/types";
+import MediumImg from "../public/medium.gif";
+import SpotifyImg from "../public/spotify.gif";
+import StockImg from "../public/stock.png";
 
 export const DEFAULT_STOCK_CARDS_CONFIG: StockConfig[] = [
   {
@@ -206,3 +209,54 @@ export const VINYL_RECORD = (props: any) => (
     />
   </svg>
 );
+
+export const WIDGET_DISPLAY_SCHEMA: WidgetDisplay[] = [
+  {
+    id: "stock",
+    title: "Stock Tracker",
+    img: StockImg,
+    description: "A responsive live stock data widget for your Notion docs.",
+    path: "/build/stock",
+  },
+  {
+    id: "spotify",
+    title: "Spotify Player",
+    img: SpotifyImg,
+    description:
+      "Aesthetic, minimalist Spotify embedded widget with a carousel.",
+    path: "/build/spotify",
+  },
+  {
+    id: "medium",
+    title: "Medium Reader",
+    img: MediumImg,
+    description:
+      "Catch up on your favourite Medium publications, authors, and tags.",
+    path: "/build/medium",
+  },
+];
+
+export const FEATURES = [
+  {
+    id: 1,
+    title: 'Completely Customizable',
+    text: 'Easily customize each widget to your specifications in the builder.',
+  },
+  {
+    id: 2,
+    title: 'Auto-Resizing',
+    text: 'Each widget is responsive and will adapt based on the screen size.',
+  },
+  {
+    id: 3,
+    title: 'Performance',
+    text: 'Widgets are optimized to not slow down your Notion doc.',
+  },
+  {
+    id: 4,
+    title: 'Plug and Play',
+    text: 'No sign ups, accounts, or plans needed. Just copy the embedded link!',
+  },
+]
+
+export const BG_BLUR_IMAGE = "https://uploads-ssl.webflow.com/5a9ee6416e90d20001b20038/62daa85b754c76862ab38772_h64k38NO_Y5PhWFObsfYEeYeR-V4PlHL5_ZQjfAeJTwbrmk2GNHXDnPxX4egNq8E4ryvGh_PV7iZTI2AgyJ3VAWVmBQ2Vu5rZO5O3a93UqV0eLan9FOYIxDOG-IQVY7qCiG-8-0k0R7OMiNx9zrTaLE.png"

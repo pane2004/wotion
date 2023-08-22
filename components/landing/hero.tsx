@@ -6,9 +6,13 @@ import {
   Button,
   Stack,
   createIcon,
+  useColorMode,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 export default function HeroLanding() {
+  const { colorMode, toggleColorMode } = useColorMode();
+
   return (
     <>
       <Stack
@@ -22,7 +26,7 @@ export default function HeroLanding() {
           fontWeight={600}
           fontSize={{ md: "70px", sm: "6xl" }}
           lineHeight={"130%"}
-          color={"brand.main"}
+          color={useColorModeValue("brand.main", "brand.light")}
         >
           <Text
             as={"span"}
@@ -50,16 +54,16 @@ export default function HeroLanding() {
           position={"relative"}
         >
           <Button
-            colorScheme={"green"}
-            bg={"brand.main"}
             px={6}
+            bg={useColorModeValue("brand.main", "brand.light")}
             _hover={{
-              bg: "brand.light",
+              bg: useColorModeValue("brand.light", "brand.main")
             }}
             size="lg"
             position="absolute"
             zIndex={1}
             boxShadow={"0 5px 30px 0px rgb(63 62 94 / 43%)"}
+            textColor={"brand.bg"}
           >
             ⚡ Start Building
           </Button>

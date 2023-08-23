@@ -145,7 +145,7 @@ export default function StockConfigCard({
         </Box>
         <Spacer />
         <IconButton
-          colorScheme="blue"
+          colorScheme="button"
           aria-label="Delete stock"
           icon={<DeleteIcon />}
           onClick={() => {

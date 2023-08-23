@@ -37,6 +37,7 @@ import { StockConfig, StockInterval } from "@/types/types";
 
 import StockConfigCard from "./configcard";
 import StockCard from "@/components/stock/stockcard";
+import { useRouter } from "next/router";
 
 /*
   General Format of Data in Link - CANNOT have deeply nested data
@@ -49,6 +50,7 @@ import StockCard from "@/components/stock/stockcard";
 */
 
 export default function StockBuilder() {
+  const router = useRouter();
   const [stockConfigs, setStockConfigs] = useState<StockConfig[]>(
     DEFAULT_STOCK_CARDS_CONFIG
   );
@@ -148,6 +150,7 @@ export default function StockBuilder() {
           <IconButton
             aria-label="Return to dashboard"
             icon={<ChevronLeftIcon />}
+            onClick={() => {router.push("/")}}
           />
           <Text pl={3} fontSize="lg">
             Return to Dashboard
@@ -226,7 +229,7 @@ export default function StockBuilder() {
                 minHeight="60px"
                 aria-label="Copy to clipboard"
                 icon={<CopyIcon />}
-                colorScheme="blue"
+                colorScheme="button"
                 onClick={() => {
                   navigator.clipboard.writeText(
                     `http://localhost:3000/widgets/stock${linkString}`

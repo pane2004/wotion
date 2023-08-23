@@ -36,8 +36,10 @@ import {
 import { ARTICLE_OPTIONS, MEDIUM_HELPER_MESSAGES } from "@/constants/stock";
 import { MediumFormat, MediumPaperConfig } from "@/types/types";
 import MediumNewspaper from "@/components/medium/newspaper";
+import { useRouter } from "next/router";
 
 export default function StockBuilder() {
+  const router = useRouter();
   const [target, setTarget] = useState<string>("MicrosoftDesign");
   const [format, setFormat] = useState<MediumFormat>("User");
   const [config, setConfig] = useState<MediumPaperConfig>({
@@ -65,6 +67,9 @@ export default function StockBuilder() {
           <IconButton
             aria-label="Return to dashboard"
             icon={<ChevronLeftIcon />}
+            onClick={() => {
+              router.push("/");
+            }}
           />
           <Text pl={3} fontSize="lg">
             Return to Dashboard
@@ -185,7 +190,7 @@ export default function StockBuilder() {
                 minHeight="60px"
                 aria-label="Copy to clipboard"
                 icon={<CopyIcon />}
-                colorScheme="blue"
+                colorScheme="button"
                 onClick={() => {
                   navigator.clipboard.writeText(
                     `http://localhost:3000/widgets/medium/${linkString}`

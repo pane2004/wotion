@@ -51,8 +51,10 @@ import {
 import { DEFAULT_STOCK_CARDS_CONFIG } from "@/constants/stock";
 import { SpotifyConfig } from "@/types/types";
 import SpotifyCarousel from "@/components/spotify/carousel";
+import { useRouter } from "next/router";
 
 export default function SpotifyBuilder() {
+  const router = useRouter();
   const [urls, setUrls] = useState<string[]>([
     "https://open.spotify.com/track/2qOm7ukLyHUXWyR4ZWLwxA?",
   ]);
@@ -68,9 +70,12 @@ export default function SpotifyBuilder() {
       .filter((key): key is keyof SpotifyConfig => config.hasOwnProperty(key))
       .map((key: keyof SpotifyConfig) => {
         return config[key] ? key : `!${key}`;
-      }).join("/");
+      })
+      .join("/");
 
-    const urlStrings = urls.map((url: string) => encodeURIComponent(url)).join("/");
+    const urlStrings = urls
+      .map((url: string) => encodeURIComponent(url))
+      .join("/");
 
     return `${configStrings}/${urlStrings}`;
   }, [urls, config]);
@@ -130,6 +135,9 @@ export default function SpotifyBuilder() {
           <IconButton
             aria-label="Return to dashboard"
             icon={<ChevronLeftIcon />}
+            onClick={() => {
+              router.push("/");
+            }}
           />
           <Text pl={3} fontSize="lg">
             Return to Dashboard
@@ -266,7 +274,7 @@ export default function SpotifyBuilder() {
                 minHeight="60px"
                 aria-label="Copy to clipboard"
                 icon={<CopyIcon />}
-                colorScheme="blue"
+                colorScheme="button"
                 onClick={() => {
                   navigator.clipboard.writeText(
                     `http://localhost:3000/widgets/spotify/${linkString}`

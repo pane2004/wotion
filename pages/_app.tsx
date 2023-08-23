@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
 import { GridItemStyle } from "@/components/landing/display";
 import { extendTheme } from "@chakra-ui/react";
+import { switchTheme } from "@/themes/themes";
 
 const theme = extendTheme({
   colors: {
@@ -19,6 +20,13 @@ const theme = extendTheme({
       500: "#FFBC66",
       600: "#F9F871",
     },
+    button: {
+      500: "#706D91",
+      600: "#3F3E5E",
+    },
+  },
+  components: {
+    Switch: switchTheme
   },
   fonts: {
     body: "sans-serif",

@@ -54,7 +54,8 @@ export default function StockConfigCard({
             <Box>
               <Text fontSize="md">Ticker</Text>
               <Input
-                placeholder={`${widget?.stock}`}
+                value={widget?.stock}
+                placeholder={"Enter Stock Ticker"}
                 onChange={(e) => {
                   configChangeHandler(e.target.value, "stock", widget?.id);
                 }}
@@ -63,7 +64,7 @@ export default function StockConfigCard({
             <Box>
               <Text fontSize="md">% Interval</Text>
               <Select
-                placeholder={widget?.interval}
+                value={widget?.interval}
                 onChange={(e) => {
                   configChangeHandler(e.target.value, "interval", widget?.id);
                 }}

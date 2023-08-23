@@ -30,7 +30,7 @@ export default function WidgetDisplayComponent() {
           color={useColorModeValue("brand.main", "brand.bg")}
           pb={20}
         >
-          Browse the WotionVerse
+          Browse the Wotion Library
         </Heading>
         <Stack direction="row" spacing={20} justifyContent={"center"}>
           {WIDGET_DISPLAY_SCHEMA.map((widget: WidgetDisplay) => (

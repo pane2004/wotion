@@ -38,6 +38,8 @@ import { StockConfig, StockInterval } from "@/types/types";
 import StockConfigCard from "./configcard";
 import StockCard from "@/components/stock/stockcard";
 import { useRouter } from "next/router";
+import logo from "../../../public/logo.png";
+import Image from "next/image";
 
 /*
   General Format of Data in Link - CANNOT have deeply nested data
@@ -145,12 +147,24 @@ export default function StockBuilder() {
         minHeight="100vh"
         gap={7}
       >
-        <Heading size="md">Logo Goes Here</Heading>
+        <Image
+          height={75}
+          width={75}
+          objectFit={"cover"}
+          src={logo}
+          alt="wotion logo"
+          onClick={() => {
+            router.push("/");
+          }}
+          style={{ cursor: "pointer" }}
+        />
         <Flex direction="row" alignItems="center">
           <IconButton
             aria-label="Return to dashboard"
             icon={<ChevronLeftIcon />}
-            onClick={() => {router.push("/")}}
+            onClick={() => {
+              router.push("/");
+            }}
           />
           <Text pl={3} fontSize="lg">
             Return to Dashboard

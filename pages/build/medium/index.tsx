@@ -9,7 +9,6 @@ import {
   IconButton,
   Text,
   ButtonGroup,
-  VStack,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -24,7 +23,6 @@ import {
   FormHelperText,
   InputGroup,
   InputRightElement,
-  Slider,
   Switch,
 } from "@chakra-ui/react";
 import {
@@ -37,6 +35,8 @@ import { ARTICLE_OPTIONS, MEDIUM_HELPER_MESSAGES } from "@/constants/stock";
 import { MediumFormat, MediumPaperConfig } from "@/types/types";
 import MediumNewspaper from "@/components/medium/newspaper";
 import { useRouter } from "next/router";
+import Image from "next/image";
+import logo from "../../../public/logo.png";
 
 export default function StockBuilder() {
   const router = useRouter();
@@ -62,7 +62,17 @@ export default function StockBuilder() {
         minHeight="100vh"
         gap={7}
       >
-        <Heading size="md">Logo Goes Here</Heading>
+        <Image
+          height={75}
+          width={75}
+          objectFit={"cover"}
+          src={logo}
+          alt="wotion logo"
+          onClick={() => {
+            router.push("/");
+          }}
+          style={{ cursor: "pointer" }}
+        />
         <Flex direction="row" alignItems="center">
           <IconButton
             aria-label="Return to dashboard"

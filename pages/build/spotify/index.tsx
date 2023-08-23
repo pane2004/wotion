@@ -52,6 +52,8 @@ import { DEFAULT_STOCK_CARDS_CONFIG } from "@/constants/stock";
 import { SpotifyConfig } from "@/types/types";
 import SpotifyCarousel from "@/components/spotify/carousel";
 import { useRouter } from "next/router";
+import Image from "next/image";
+import logo from "../../../public/logo.png";
 
 export default function SpotifyBuilder() {
   const router = useRouter();
@@ -130,7 +132,17 @@ export default function SpotifyBuilder() {
         minHeight="100vh"
         gap={7}
       >
-        <Heading size="md">Logo Goes Here</Heading>
+        <Image
+          height={75}
+          width={75}
+          objectFit={"cover"}
+          src={logo}
+          alt="wotion logo"
+          onClick={() => {
+            router.push("/");
+          }}
+          style={{ cursor: "pointer" }}
+        />
         <Flex direction="row" alignItems="center">
           <IconButton
             aria-label="Return to dashboard"

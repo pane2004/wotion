@@ -8,11 +8,10 @@ import {
   createIcon,
   useColorMode,
   useColorModeValue,
+  Link,
 } from "@chakra-ui/react";
 
 export default function HeroLanding() {
-  const { colorMode, toggleColorMode } = useColorMode();
-
   return (
     <>
       <Stack
@@ -46,28 +45,19 @@ export default function HeroLanding() {
           Fully customizable, dynamic notion widgets. <br /> No accounts, no
           plans, 100% open source.
         </Text>
-        <Stack
-          direction={"column"}
-          spacing={3}
-          align={"center"}
-          alignSelf={"center"}
-          position={"relative"}
-        >
+        <Link href="#browse-anchor">
           <Button
-            px={6}
             bg={useColorModeValue("brand.main", "brand.light")}
             _hover={{
-              bg: useColorModeValue("brand.light", "brand.main")
+              bg: useColorModeValue("brand.light", "brand.main"),
             }}
             size="lg"
-            position="absolute"
-            zIndex={1}
             boxShadow={"0 5px 30px 0px rgb(63 62 94 / 43%)"}
             textColor={"brand.bg"}
           >
             ⚡ Start Building
           </Button>
-        </Stack>
+        </Link>
       </Stack>
     </>
   );

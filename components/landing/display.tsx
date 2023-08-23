@@ -12,7 +12,7 @@ import {
   Center,
   Grid,
 } from "@chakra-ui/react";
-import { Global } from '@emotion/react'
+import { Global } from "@emotion/react";
 
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -21,6 +21,7 @@ export default function WidgetDisplayComponent() {
   return (
     <>
       <Stack
+        id="browse-anchor"
         as={Box}
         textAlign={"center"}
         py={20}
@@ -126,4 +127,4 @@ export const GridItemStyle = () => (
       }
     `}
   />
-)
+);

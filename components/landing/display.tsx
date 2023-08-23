@@ -3,14 +3,10 @@ import { WidgetDisplay } from "@/types/types";
 import {
   Box,
   Heading,
-  Container,
   Text,
-  Button,
   Stack,
-  createIcon,
   useColorModeValue,
   Center,
-  Grid,
 } from "@chakra-ui/react";
 import { Global } from "@emotion/react";
 

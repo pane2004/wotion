@@ -1,13 +1,5 @@
 import {
-  Box,
-  Heading,
   Container,
-  Text,
-  Button,
-  Stack,
-  Icon,
-  useColorModeValue,
-  createIcon,
   Divider,
 } from "@chakra-ui/react";
 import HeroLanding from "./hero";

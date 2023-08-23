@@ -1,19 +1,9 @@
 import {
   Box,
   Flex,
-  Avatar,
-  Text,
   Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-  useDisclosure,
-  useColorModeValue,
   Stack,
   useColorMode,
-  Center,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { FaGithub } from "react-icons/fa";

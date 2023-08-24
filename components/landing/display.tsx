@@ -23,6 +23,7 @@ export default function WidgetDisplayComponent() {
         textAlign={"center"}
         py={20}
         bg={useColorModeValue("brand.bg", "gray.900")}
+        alignItems={"center"}
       >
         <Heading
           fontWeight={600}
@@ -33,7 +34,7 @@ export default function WidgetDisplayComponent() {
         >
           Browse the Wotion Library
         </Heading>
-        <Wrap spacing={20} justify={"center"}>
+        <Wrap spacing={20} justify={"center"} maxW={"6xl"}>
           {WIDGET_DISPLAY_SCHEMA.map((widget: WidgetDisplay) => (
             <WrapItem key={widget.id}>
               <Product widget={widget} />

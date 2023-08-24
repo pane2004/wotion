@@ -65,7 +65,6 @@ export default function StockBuilder() {
         <Image
           height={75}
           width={75}
-          objectFit={"cover"}
           src={logo}
           alt="wotion logo"
           onClick={() => {

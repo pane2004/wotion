@@ -97,7 +97,6 @@ const Product = ({ widget }: { widget: WidgetDisplay }) => {
             className="grid-item-thumbnail"
             height={230}
             width={282}
-            objectFit={"cover"}
             src={widget.img}
             alt="#"
           />

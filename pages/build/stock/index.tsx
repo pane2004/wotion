@@ -16,6 +16,7 @@ import {
   PopoverBody,
   PopoverArrow,
   PopoverCloseButton,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { ChevronLeftIcon, AddIcon, CopyIcon } from "@chakra-ui/icons";
 
@@ -140,7 +141,7 @@ export default function StockBuilder() {
     <Flex alignItems="center" gap="2" wrap="wrap">
       <Flex
         p={10}
-        bg="gray.100"
+        bg={useColorModeValue("gray.100", "gray.700")}
         flexGrow="1"
         justify="space-between"
         direction="column"
@@ -242,12 +243,12 @@ export default function StockBuilder() {
                 minHeight="60px"
                 aria-label="Copy to clipboard"
                 icon={<CopyIcon />}
-                colorScheme="button"
                 onClick={() => {
                   navigator.clipboard.writeText(
                     `http://localhost:3000/widgets/stock${linkString}`
                   );
                 }}
+                variant={"CopyButton"}
               />
             </ButtonGroup>
           </PopoverTrigger>

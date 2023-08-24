@@ -1,16 +1,38 @@
-import { switchAnatomy } from '@chakra-ui/anatomy'
-import { createMultiStyleConfigHelpers } from '@chakra-ui/react'
+import { switchAnatomy } from "@chakra-ui/anatomy";
+import {
+  createMultiStyleConfigHelpers,
+  defineStyle,
+  defineStyleConfig,
+} from "@chakra-ui/react";
 
 const { definePartsStyle, defineMultiStyleConfig } =
-  createMultiStyleConfigHelpers(switchAnatomy.keys)
+  createMultiStyleConfigHelpers(switchAnatomy.keys);
 
 const baseStyle = definePartsStyle({
-  // define the part you're going to style
   track: {
     _checked: {
-      bg: 'brand.light',
+      bg: "brand.light",
     },
   },
-})
+});
 
-export const switchTheme = defineMultiStyleConfig({ baseStyle })
+const CopyButton = defineStyle({
+  background: "brand.light",
+  color: "white",
+  _hover: {
+    background: "brand.main",
+  },
+  _dark: {
+    background: "brand.light",
+    color: "white",
+    _hover: {
+      background: "brand.main",
+    },
+  },
+});
+
+export const buttonTheme = defineStyleConfig({
+  variants: { CopyButton },
+});
+
+export const switchTheme = defineMultiStyleConfig({ baseStyle });

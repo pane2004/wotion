@@ -23,6 +23,7 @@ import {
   Link,
   FormLabel,
   Switch,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import {
   ChevronLeftIcon,
@@ -125,7 +126,7 @@ export default function SpotifyBuilder() {
     <Flex alignItems="center" gap="2" wrap="wrap">
       <Flex
         p={10}
-        bg="gray.100"
+        bg={useColorModeValue("gray.100", "gray.700")}
         flexGrow="1"
         justify="space-between"
         direction="column"
@@ -285,12 +286,12 @@ export default function SpotifyBuilder() {
                 minHeight="60px"
                 aria-label="Copy to clipboard"
                 icon={<CopyIcon />}
-                colorScheme="button"
                 onClick={() => {
                   navigator.clipboard.writeText(
                     `http://localhost:3000/widgets/spotify/${linkString}`
                   );
                 }}
+                variant={"CopyButton"}
               />
             </ButtonGroup>
           </PopoverTrigger>
@@ -334,7 +335,7 @@ export function UrlEditor({
 
   return (
     <Box ref={setNodeRef} style={style} {...attributes} {...listeners}>
-      <Flex dir="row" alignItems={"center"} bg="gray.100">
+      <Flex dir="row" alignItems={"center"}>
         <DragHandleIcon />
         <InputGroup>
           <Input

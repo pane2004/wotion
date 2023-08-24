@@ -24,6 +24,7 @@ import {
   InputGroup,
   InputRightElement,
   Switch,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import {
   ChevronLeftIcon,
@@ -56,7 +57,7 @@ export default function StockBuilder() {
     <Flex alignItems="center" gap="2" wrap="wrap">
       <Flex
         p={10}
-        bg="gray.100"
+        bg={useColorModeValue("gray.100", "gray.700")}
         flexGrow="1"
         direction="column"
         minHeight="100vh"
@@ -199,12 +200,12 @@ export default function StockBuilder() {
                 minHeight="60px"
                 aria-label="Copy to clipboard"
                 icon={<CopyIcon />}
-                colorScheme="button"
                 onClick={() => {
                   navigator.clipboard.writeText(
                     `http://localhost:3000/widgets/medium/${linkString}`
                   );
                 }}
+                variant={"CopyButton"}
               />
             </ButtonGroup>
           </PopoverTrigger>

@@ -9,6 +9,7 @@ import {
   Switch,
   FormControl,
   FormLabel,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
 
@@ -41,7 +42,7 @@ export default function StockConfigCard({
   return (
     <Box ref={setNodeRef} style={style} {...attributes} {...listeners}>
       <Flex
-        bg="gray.100"
+        bg={useColorModeValue("gray.100", "gray.600")}
         direction="row"
         alignItems="center"
         borderRadius="lg"
@@ -145,12 +146,12 @@ export default function StockConfigCard({
         </Box>
         <Spacer />
         <IconButton
-          colorScheme="button"
           aria-label="Delete stock"
           icon={<DeleteIcon />}
           onClick={() => {
             deleteHandler(widget?.id);
           }}
+          variant={"CopyButton"}
         />
       </Flex>
     </Box>

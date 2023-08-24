@@ -39,7 +39,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import logo from "../../../public/logo.png";
 
-export default function StockBuilder() {
+export default function MediumBuilder() {
   const router = useRouter();
   const [target, setTarget] = useState<string>("MicrosoftDesign");
   const [format, setFormat] = useState<MediumFormat>("User");

@@ -1,5 +1,4 @@
 import { StaticImageData } from "next/image";
-import { Url } from "url";
 
 export type StockConfig = {
   id: string;
@@ -68,4 +67,12 @@ export type WidgetDisplay = {
   img: StaticImageData;
   description: string;
   path: string;
+};
+
+export type IconPositions = "left" | "right" | "none";
+
+export type ButtonConfig = {
+  radius: number;
+  padding: number;
+  pos: IconPositions;
 };

@@ -1,4 +1,4 @@
-import { StockConfig, StockInterval, MediumFormat, WidgetDisplay } from "@/types/types";
+import { StockConfig, StockInterval, MediumFormat, WidgetDisplay, IconPositions } from "@/types/types";
 import MediumImg from "../public/medium.gif";
 import SpotifyImg from "../public/spotify.gif";
 import StockImg from "../public/stock.png";
@@ -260,3 +260,5 @@ export const FEATURES = [
 ]
 
 export const BG_BLUR_IMAGE = "https://uploads-ssl.webflow.com/5a9ee6416e90d20001b20038/62daa85b754c76862ab38772_h64k38NO_Y5PhWFObsfYEeYeR-V4PlHL5_ZQjfAeJTwbrmk2GNHXDnPxX4egNq8E4ryvGh_PV7iZTI2AgyJ3VAWVmBQ2Vu5rZO5O3a93UqV0eLan9FOYIxDOG-IQVY7qCiG-8-0k0R7OMiNx9zrTaLE.png"
+
+export const BUTTON_ICON_POS_OPTIONS: IconPositions[] = ["left", "right", "none"];

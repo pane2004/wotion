@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box, Heading, Spacer, Text, Skeleton, Image } from "@chakra-ui/react";
+import { Box, Heading, Spacer, Text, Skeleton, Image, useColorModeValue } from "@chakra-ui/react";
 import { MEDIUM_LOGO } from "@/constants/stock";
 import { MediumData, MediumFormat, MediumPaperConfig } from "@/types/types";
 import HTMLFlipBook from "react-pageflip";
@@ -18,6 +18,7 @@ export default function MediumNewspaper({
   const [data, setData] = useState<MediumData>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
+  const bg = useColorModeValue("gray.100", "gray.700");
 
   // fetch data on target or format change
   useEffect(() => {
@@ -52,7 +53,7 @@ export default function MediumNewspaper({
   // Loading state
   if (isLoading) {
     return (
-      <Box minW="30vh" p={5} bg="gray.100" borderRadius="lg">
+      <Box minW="30vh" p={5} bg={bg} borderRadius="lg">
         <Skeleton height="50px" my="10px" />
         <Skeleton height="50px" my="10px" />
         <Skeleton height="50px" my="10px" />
@@ -94,7 +95,7 @@ export default function MediumNewspaper({
         <div key={target}>
           <Box
             p={5}
-            bg="gray.100"
+            bg={bg}
             borderRadius="lg"
             display={"flex"}
             alignItems="center"
@@ -125,7 +126,7 @@ export default function MediumNewspaper({
             <div key={`${article.title}-${i}`}>
               <Box
                 p={5}
-                bg="gray.100"
+                bg={bg}
                 borderRadius="lg"
                 style={{ maxHeight: "100%", overflowY: "scroll" }}
                 minW={config.width}

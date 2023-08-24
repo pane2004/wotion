@@ -7,6 +7,7 @@ import {
   Skeleton,
   Image,
   Link,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { SPOTIFY_LOGO, VINYL_RECORD } from "@/constants/stock";
 import { SpotifyConfig } from "@/types/types";
@@ -23,6 +24,7 @@ export default function SpotifyCarousel({
   const [urlResponses, setUrlResponses] = useState<any>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
+  const bg = useColorModeValue("gray.100", "gray.700");
 
   useEffect(() => {
     if (urls) {
@@ -75,12 +77,12 @@ export default function SpotifyCarousel({
   // Loading state
   if (isLoading) {
     return (
-      <Box minW="20vh" p={5} bg="gray.100" borderRadius="lg">
-        <Skeleton height="30px" my="10px" />
-        <Skeleton height="30px" my="10px" />
-        <Skeleton height="30px" my="10px" />
-        <Skeleton height="30px" my="10px" />
-        <Skeleton height="30px" my="10px" />
+      <Box minW="30vh" p={5} bg={bg} borderRadius="lg">
+        <Skeleton height="40px" my="10px" />
+        <Skeleton height="40px" my="10px" />
+        <Skeleton height="40px" my="10px" />
+        <Skeleton height="40px" my="10px" />
+        <Skeleton height="40px" my="10px" />
       </Box>
     );
   }

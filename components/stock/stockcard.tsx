@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { Box, Heading, Spacer, Text, Skeleton } from "@chakra-ui/react";
+import { Box, Heading, Spacer, Text, Skeleton, useColorModeValue } from "@chakra-ui/react";
 
 import { StockConfig, StockData } from "@/types/types";
 
@@ -20,6 +20,7 @@ function formatTimeStamp(timeStamp: number) {
 export default function StockCard({ config }: { config: StockConfig }) {
   const [data, setData] = useState<StockData>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const bg = useColorModeValue("gray.100", "gray.700");
 
   // fetch stock data on mount
   useEffect(() => {
@@ -54,7 +55,7 @@ export default function StockCard({ config }: { config: StockConfig }) {
   // Loading state
   if (isLoading) {
     return (
-      <Box minW="30vh" p={5} bg="gray.100" borderRadius="lg">
+      <Box minW="30vh" p={5} bg={bg} borderRadius="lg">
         <Skeleton height="30px" my="10px" />
         <Skeleton height="30px" my="10px" />
         <Skeleton height="30px" my="10px" />
@@ -68,7 +69,7 @@ export default function StockCard({ config }: { config: StockConfig }) {
     <Box
       display="flex"
       flexDirection="column"
-      bg="gray.100"
+      bg={bg}
       alignItems="flex-start"
       borderRadius="lg"
       p={5}

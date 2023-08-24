@@ -267,9 +267,6 @@ export default function StockBuilder() {
       >
         <VStack
           gap={5}
-          border="2px"
-          borderColor="gray.400"
-          borderStyle="dashed"
           padding={1}
         >
           {stockConfigs.length > 0 &&

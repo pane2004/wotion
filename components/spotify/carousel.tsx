@@ -9,7 +9,7 @@ import {
   Link,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { SPOTIFY_LOGO, VINYL_RECORD } from "@/constants/stock";
+import { SPOTIFY_LOGO, VINYL_RECORD } from "@/constants/constants";
 import { SpotifyConfig } from "@/types/types";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";

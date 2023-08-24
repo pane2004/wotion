@@ -2,7 +2,7 @@ import { StockConfig } from "@/types/types";
 import { useRouter } from "next/router";
 import { Flex, VStack, Box, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { STOCK_INTERVALS } from "@/constants/stock";
+import { STOCK_INTERVALS } from "@/constants/constants";
 import StockCard from "@/components/stock/stockcard";
 
 const isStockConfig = (obj: any): obj is StockConfig => {

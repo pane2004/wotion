@@ -1,4 +1,4 @@
-import { BG_BLUR_IMAGE, WIDGET_DISPLAY_SCHEMA } from "@/constants/stock";
+import { BG_BLUR_IMAGE, WIDGET_DISPLAY_SCHEMA } from "@/constants/constants";
 import { WidgetDisplay } from "@/types/types";
 import {
   Box,
@@ -7,6 +7,8 @@ import {
   Stack,
   useColorModeValue,
   Center,
+  Wrap,
+  WrapItem,
 } from "@chakra-ui/react";
 import { Global } from "@emotion/react";
 
@@ -32,12 +34,15 @@ export default function WidgetDisplayComponent() {
         >
           Browse the Wotion Library
         </Heading>
-        <Stack direction="row" spacing={20} justifyContent={"center"}>
+        <Wrap spacing={20} justify={"center"}>
           {WIDGET_DISPLAY_SCHEMA.map((widget: WidgetDisplay) => (
-            <Product key={widget.id} widget={widget} />
+            <WrapItem key={widget.id}>
+              <Product widget={widget} />
+            </WrapItem>
           ))}
-        </Stack>
+        </Wrap>
         <Heading
+        pt={10}
           fontWeight={500}
           fontSize={{ md: "2xl", sm: "6xl" }}
           lineHeight={"130%"}

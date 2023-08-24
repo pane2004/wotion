@@ -40,8 +40,8 @@ export default function HeroLanding() {
           Your Notion Docs
         </Heading>
         <Text color={"gray.500"} fontSize={"xl"}>
-          Fully customizable, dynamic notion widgets. <br /> No accounts, no
-          plans, 100% open source.
+          Welcome to Wotion: a library of dynamic widgets for Notion.
+          <br /> No accounts, no plans, 100% open source.
         </Text>
         <Link href="#browse-anchor">
           <Button

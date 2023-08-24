@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Box, Heading, Spacer, Text, Skeleton, Image, useColorModeValue } from "@chakra-ui/react";
-import { MEDIUM_LOGO } from "@/constants/stock";
+import { MEDIUM_LOGO } from "@/constants/constants";
 import { MediumData, MediumFormat, MediumPaperConfig } from "@/types/types";
 import HTMLFlipBook from "react-pageflip";
 // disable typing for flipbook

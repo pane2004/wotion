@@ -2,6 +2,8 @@ import { StockConfig, StockInterval, MediumFormat, WidgetDisplay, IconPositions 
 import MediumImg from "../public/medium.gif";
 import SpotifyImg from "../public/spotify.gif";
 import StockImg from "../public/stock.png";
+import QuoteImg from "../public/quote.png"
+import ButtonImg from "../public/button.gif"
 
 export const DEFAULT_STOCK_CARDS_CONFIG: StockConfig[] = [
   {
@@ -233,6 +235,22 @@ export const WIDGET_DISPLAY_SCHEMA: WidgetDisplay[] = [
     description:
       "Catch up on your favourite Medium publications, authors, and tags.",
     path: "/build/medium",
+  },
+  {
+    id: "quote",
+    title: "Quote Widget",
+    img: QuoteImg,
+    description:
+      "Display an inspiring quote in your doc.",
+    path: "/build/quote",
+  },
+  {
+    id: "button",
+    title: "Custom Button Widget",
+    img: ButtonImg,
+    description:
+      "Display a fully customizable button.",
+    path: "/build/button",
   },
 ];
 

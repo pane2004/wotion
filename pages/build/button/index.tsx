@@ -33,7 +33,7 @@ import {
 } from "@chakra-ui/icons";
 import {
   BUTTON_ICON_POS_OPTIONS,
-} from "@/constants/stock";
+} from "@/constants/constants";
 import { ButtonConfig } from "@/types/types";
 import { useRouter } from "next/router";
 import Image from "next/image";

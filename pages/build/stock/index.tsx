@@ -33,7 +33,7 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 
-import { DEFAULT_STOCK_CARDS_CONFIG } from "@/constants/stock";
+import { DEFAULT_STOCK_CARDS_CONFIG } from "@/constants/constants";
 import { StockConfig, StockInterval } from "@/types/types";
 
 import StockConfigCard from "./configcard";

@@ -18,7 +18,7 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { StockConfig, StockInterval } from "@/types/types";
 
-import { STOCK_INTERVALS } from "@/constants/stock";
+import { STOCK_INTERVALS } from "@/constants/constants";
 
 export default function StockConfigCard({
   id,

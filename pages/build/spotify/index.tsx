@@ -49,7 +49,7 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 
-import { DEFAULT_STOCK_CARDS_CONFIG } from "@/constants/stock";
+import { DEFAULT_STOCK_CARDS_CONFIG } from "@/constants/constants";
 import { SpotifyConfig } from "@/types/types";
 import SpotifyCarousel from "@/components/spotify/carousel";
 import { useRouter } from "next/router";

@@ -32,7 +32,7 @@ import {
   CopyIcon,
   RepeatIcon,
 } from "@chakra-ui/icons";
-import { ARTICLE_OPTIONS, MEDIUM_HELPER_MESSAGES } from "@/constants/stock";
+import { ARTICLE_OPTIONS, MEDIUM_HELPER_MESSAGES } from "@/constants/constants";
 import { MediumFormat, MediumPaperConfig } from "@/types/types";
 import MediumNewspaper from "@/components/medium/newspaper";
 import { useRouter } from "next/router";

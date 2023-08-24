@@ -10,7 +10,7 @@ import {
   VStack,
 } from '@chakra-ui/react'
 import { CheckIcon } from '@chakra-ui/icons'
-import { FEATURES } from '@/constants/stock'
+import { FEATURES } from '@/constants/constants'
 
 export default function Features() {
   

@@ -269,7 +269,7 @@ export default function SpotifyBuilder() {
               <Button
                 onClick={() => {
                   navigator.clipboard.writeText(
-                    `http://localhost:3000/widgets/spotify/${linkString}`
+                    `https://wotion.co/widgets/spotify/${linkString}`
                   );
                 }}
                 flexBasis={0}
@@ -277,7 +277,7 @@ export default function SpotifyBuilder() {
                 minHeight="60px"
               >
                 <Box isTruncated maxW={500} textDecoration="underline">
-                  {`http://localhost:3000/widgets/spotify/${linkString}`}
+                  {`https://wotion.co/widgets/spotify/${linkString}`}
                 </Box>
               </Button>
               <IconButton
@@ -288,7 +288,7 @@ export default function SpotifyBuilder() {
                 icon={<CopyIcon />}
                 onClick={() => {
                   navigator.clipboard.writeText(
-                    `http://localhost:3000/widgets/spotify/${linkString}`
+                    `https://wotion.co/widgets/spotify/${linkString}`
                   );
                 }}
                 variant={"CopyButton"}

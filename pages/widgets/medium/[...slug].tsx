@@ -41,7 +41,7 @@ export default function MediumWidget() {
   return (
     <Box height="100vh" width="100vw">
       {error ? (
-        <Text>L bozo</Text>
+        <Text>Failed to render.</Text>
       ) : (
         <Flex width={"100%"} height={"100%"} p={5}>
           <MediumNewspaper

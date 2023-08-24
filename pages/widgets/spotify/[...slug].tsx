@@ -28,7 +28,7 @@ export default function SpotifyWidget() {
   return (
     <Box height="100vh" width="100vw">
       {error ? (
-        <Text>L bozo</Text>
+        <Text>Failed to render.</Text>
       ) : (
           <SpotifyCarousel
             config={config}

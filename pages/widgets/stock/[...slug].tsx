@@ -66,7 +66,7 @@ export default function StockWidget() {
   return (
     <Box height="100vh" width="100vw">
       {error ? (
-        <Text>L bozo</Text>
+        <Text>Failed to render.</Text>
       ) : (
         <Flex
           gap={5}

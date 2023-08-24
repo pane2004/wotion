@@ -10,7 +10,6 @@ import {
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
-import { Global } from "@emotion/react";
 
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -42,7 +41,7 @@ export default function WidgetDisplayComponent() {
           ))}
         </Wrap>
         <Heading
-        pt={10}
+          pt={10}
           fontWeight={500}
           fontSize={{ md: "2xl", sm: "6xl" }}
           lineHeight={"130%"}
@@ -118,13 +117,3 @@ const Product = ({ widget }: { widget: WidgetDisplay }) => {
     </Center>
   );
 };
-
-export const GridItemStyle = () => (
-  <Global
-    styles={`
-      .grid-item-thumbnail {
-        border-radius: 12px;
-      }
-    `}
-  />
-);

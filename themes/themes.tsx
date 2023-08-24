@@ -4,6 +4,7 @@ import {
   defineStyle,
   defineStyleConfig,
 } from "@chakra-ui/react";
+import { Global } from "@emotion/react";
 
 const { definePartsStyle, defineMultiStyleConfig } =
   createMultiStyleConfigHelpers(switchAnatomy.keys);
@@ -36,3 +37,13 @@ export const buttonTheme = defineStyleConfig({
 });
 
 export const switchTheme = defineMultiStyleConfig({ baseStyle });
+
+export const GridItemStyle = () => (
+  <Global
+    styles={`
+      .grid-item-thumbnail {
+        border-radius: 12px;
+      }
+    `}
+  />
+);

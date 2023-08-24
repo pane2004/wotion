@@ -1,9 +1,8 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
-import { GridItemStyle } from "@/components/landing/display";
 import { extendTheme } from "@chakra-ui/react";
-import { buttonTheme, switchTheme } from "@/themes/themes";
+import { GridItemStyle, buttonTheme, switchTheme } from "@/themes/themes";
 
 const theme = extendTheme({
   colors: {

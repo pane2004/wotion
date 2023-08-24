@@ -11,7 +11,7 @@ export default function Home() {
           content="A library of dynamic widgets made for use in your Notion Docs."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/logo.png" />
       </Head>
 
       <main>

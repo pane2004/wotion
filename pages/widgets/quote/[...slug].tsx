@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Flex, Box, Text } from "@chakra-ui/react";
-import ButtonWidget from "@/components/button/buttonWidget";
+import QuoteWidget from "@/components/quote/quote";
 
 const parseSlug = (slugs: string[]) => {
   let configuration: any = {};
@@ -13,29 +13,11 @@ const parseSlug = (slugs: string[]) => {
       const [key, value] = param.split("=");
 
       switch (key) {
-        case "link":
-          configuration.link = decodeURIComponent(value);
+        case "quote":
+          configuration.quote = decodeURIComponent(value);
           break;
-        case "m":
-          configuration.message = decodeURIComponent(value);
-          break;
-        case "r":
-          configuration.config = {
-            ...configuration.config,
-            radius: parseInt(value, 10),
-          };
-          break;
-        case "p":
-          configuration.config = {
-            ...configuration.config,
-            padding: parseInt(value, 10),
-          };
-          break;
-        case "pos":
-          configuration.config = { ...configuration.config, pos: value };
-          break;
-        case "icon":
-          configuration.icon = value;
+        case "speaker":
+          configuration.speaker = decodeURIComponent(value);
           break;
         default:
           break;
@@ -74,11 +56,9 @@ export default function ButtonWidgetOutput() {
           alignItems={"center"}
         >
           {configuration && (
-            <ButtonWidget
-              link={configuration.link}
-              icon={configuration.icon}
-              message={configuration.message}
-              config={configuration.config}
+            <QuoteWidget
+              quote={configuration.quote}
+              speaker={configuration.speaker}
             />
           )}
         </Flex>

@@ -13,7 +13,7 @@ This library will forever be free and open source. I don't believe something sim
 
 This repository is independently managed. If there is an issue with a widget, please open up an issue ticket and I will take a look. PRs will be denied unless it's a simple fix.
 
-I am always looking for new Widgets to add! If you have a good idea for a useful Widget, feel free to open up an issue ticket as well!
+I am always looking for new Widgets to add! If you have a good idea for a useful Widget, feel free to open up an issue or send me an email!
 
 ## Self-Hosting
 

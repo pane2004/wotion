@@ -25,7 +25,7 @@ Since the entire app is open source, feel free to clone the project and host wid
     npm install
     npm run dev
 
-I have also included a MongoDB boilerplate, which collects some analytics on the wotion.co production build. Feel free to use it
+I have also included a MongoDB boilerplate. I am using it to collect/store some simple user analytics on the wotion.co production build, but it serves no purpose for the open source version. Feel free to use it :)
 
 ## Disclaimers
 ### Disclaimer of Affiliation:
